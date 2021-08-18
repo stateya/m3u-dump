@@ -10,6 +10,7 @@ Tests for `m3u_dump` module.
 import os
 
 import pytest
+import shutil
 
 from click.testing import CliRunner
 
@@ -220,6 +221,7 @@ def test_command_line_already_playlist(already_exists_playlist):
         assert '#EXTM3U' == f.readline().rstrip('\n')
         assert '#EXTINF:409,artist - music_name' == f.readline().rstrip('\n')
         assert 'already_path.mp3' == f.readline().rstrip('\n')
+    shutil.rmtree(dst_dir)
 
 
 # noinspection PyShadowingNames
